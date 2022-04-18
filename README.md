@@ -38,25 +38,32 @@ This project is developed by using of these tech stacks:
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/itsDevJokers/edustore-app.git
 ```
 
-Go to the project directory
+Go to the project directory & Install dependencies
 
+- ### Client
 ```bash
-  cd my-project
+  cd client
 ```
-
-Install dependencies
-
 ```bash
   npm install
 ```
 
-Start the server
-
+- ### Server
 ```bash
-  npm run start
+  cd server
+```
+```bash
+  npm install
+```
+
+Start the server & client concurrently
+
+- Go into folder server and then 
+```bash
+  npm start
 ```
 
 
