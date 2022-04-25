@@ -1,6 +1,7 @@
 // Import all needed dependencies
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import swal from 'sweetalert';
 
 // Import api from invoice
 import { getInvoiceByOrderId } from '../../app/api/invoice';
@@ -21,18 +22,25 @@ const Invoices = () => {
   const [error, setError] = React.useState("");
   const [status, setStatus] = React.useState("process");
 
+  // useNavigate
+  const navigate = useNavigate();
+
   // Each order item change, fetch API of getInvoiceByOrderId
   React.useEffect(() => {
     getInvoiceByOrderId(order_id)
       .then(({ data }) => {
         if (data.error) {
           setError(data.message);
+          swal("No invoice available!", '', "error");
+          setTimeout(() => {
+            navigate('/')
+          }, 2000)
         }
         setInvoice(data);
       })
       .catch((err) => setError(err.message))
       .finally((_) => setStatus("success"));
-  }, [order_id]);
+  }, [order_id, navigate]);
 
   return (
     <div>

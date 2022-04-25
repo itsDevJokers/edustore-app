@@ -1,5 +1,5 @@
 // Import all needed dependencies
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 
 // Import All Pages
@@ -22,9 +22,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/account/" element={<Account />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/checkout" element={<Cart />} />
           <Route path="/invoice/:order_id" element={<Invoices />} />
+          <Route path="/*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
     </div>
